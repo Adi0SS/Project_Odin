@@ -1,24 +1,21 @@
 from googleapiclient.discovery import build
 import os
-# from flask import Flask, session, redirect, url_for,request, jsonify
 import json
 from requests import post, get
 from dotenv import load_dotenv
 load_dotenv()
-import base64
-import urllib
-import datetime
 
 
   
-
+# set up and .enc file and save your youtube API key in it and access it using dotenv method
+# You will need to create an YT api key in order to make API calls.
 api_Key = os.getenv("YT_API_KEY")
-
+# build method of the youtube API
 youtube = build('youtube', 'v3',developerKey=api_Key)
 
 
 request = youtube.search().list(
-    q = 'nahi milta',
+    q = 'Jigle bells', # add your song name or the content you need to search result for
     part = 'snippet',
     type = 'video',
     maxResults = 5,
@@ -44,12 +41,6 @@ for item in video_list:
     print(item[1],'\n')
 
 #-----------------------------------------------------------------------------------------
-
-
-
-# spotify_client_id =os.getenv("CLIENT_ID")
-# spotify_client_secret = os.getenv("CLIENT_SECRET")
-
 
     
 youtube.close()
